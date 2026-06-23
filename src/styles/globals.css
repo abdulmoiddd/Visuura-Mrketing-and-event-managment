@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* --- LIGHT MODE (Only) --- */
+  :root {
+    --background: #e3ecec;
+    --foreground: #161616;
+    --foreground-muted: #52525b;
+
+    /* Brand Colors */
+    --primary: #f5c616;
+    --secondary: #e6b810; /* Slightly darker gold for hover states */
+    --accent-blue: #161616;
+
+    /* UI Elements */
+    --border-color: rgba(22, 22, 22, 0.1);
+    --card-bg: #ffffff; /* White cards to pop against the E3ECEC background */
+    --grid-line: rgba(22, 22, 22, 0.05);
+    --spotlight-opacity: 0.15;
+
+    /* Footer Specific */
+    --footer-bg: #d1dbdb; /* Slightly darker than background for separation */
+
+    /* Logo Colors */
+    --logo-base: #161616;
+    --logo-mongo-green: #2ed06e;
+    --logo-upwork-green: #25841f;
+    --logo-politico-red: #d71920;
+
+    /* Gradients */
+    --card-gradient-start: #ffffff;
+    --card-gradient-end: #e3ecec;
+
+    /* Hero Spotlight Gradient */
+    --hero-from: #fdf5d3; /* Very light yellow highlight */
+    --hero-via: #e3ecec;
+    --hero-to: #ffffff;
+
+    /* --- LEAD MAGNET SECTION (Separated) --- */
+    --lead-from: #fdf5d3;
+    --lead-via: #e3ecec;
+    --lead-to: #ffffff;
+    --lead-glow: rgba(245, 198, 22, 0.2);
+
+    /* Overlay Gradients */
+    --overlay-gradient-start: rgba(227, 236, 236, 0.8);
+    --overlay-gradient-end: rgba(227, 236, 236, 0.8);
+
+    /* Blog Overlay */
+    --image-overlay: rgba(245, 198, 22, 0.9);
+  }
+}
+
+/* Ensure the body is set to the correct colors */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .nav-btn {
+    /* Using #161616 for text so it is readable against the bright gold background */
+    @apply px-6 py-2.5 rounded-full bg-primary text-[#161616] font-semibold transition-all duration-300 active:scale-95;
+    box-shadow: 0 0 15px color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+
+  .nav-btn:hover {
+    @apply bg-secondary;
+    box-shadow: 0 0 25px color-mix(in srgb, var(--primary) 50%, transparent);
+  }
+
+  .splash-logo-enter {
+    animation: splash-logo-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes splash-logo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
